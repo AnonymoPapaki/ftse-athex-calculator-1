@@ -113,8 +113,20 @@
             this.label28 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btResetTarget = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btBanks00 = new System.Windows.Forms.Button();
+            this.btBanks10 = new System.Windows.Forms.Button();
+            this.btBanks20 = new System.Windows.Forms.Button();
+            this.btBanks30 = new System.Windows.Forms.Button();
+            this.btBanks40 = new System.Windows.Forms.Button();
+            this.btBanks41 = new System.Windows.Forms.Button();
+            this.btBanks31 = new System.Windows.Forms.Button();
+            this.btBanks21 = new System.Windows.Forms.Button();
+            this.btBanks11 = new System.Windows.Forms.Button();
+            this.btBanks01 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // numericUpDown1
@@ -808,11 +820,141 @@
             this.btResetTarget.UseVisualStyleBackColor = true;
             this.btResetTarget.Click += new System.EventHandler(this.btResetTarget_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btBanks41);
+            this.groupBox2.Controls.Add(this.btBanks31);
+            this.groupBox2.Controls.Add(this.btBanks21);
+            this.groupBox2.Controls.Add(this.btBanks11);
+            this.groupBox2.Controls.Add(this.btBanks01);
+            this.groupBox2.Controls.Add(this.btBanks40);
+            this.groupBox2.Controls.Add(this.btBanks30);
+            this.groupBox2.Controls.Add(this.btBanks20);
+            this.groupBox2.Controls.Add(this.btBanks10);
+            this.groupBox2.Controls.Add(this.btBanks00);
+            this.groupBox2.Location = new System.Drawing.Point(341, 315);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(127, 172);
+            this.groupBox2.TabIndex = 80;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Banks";
+            // 
+            // btBanks00
+            // 
+            this.btBanks00.BackColor = System.Drawing.Color.Red;
+            this.btBanks00.Location = new System.Drawing.Point(6, 19);
+            this.btBanks00.Name = "btBanks00";
+            this.btBanks00.Size = new System.Drawing.Size(53, 23);
+            this.btBanks00.TabIndex = 0;
+            this.btBanks00.Text = "-5%";
+            this.btBanks00.UseVisualStyleBackColor = false;
+            this.btBanks00.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks10
+            // 
+            this.btBanks10.BackColor = System.Drawing.Color.Red;
+            this.btBanks10.Location = new System.Drawing.Point(6, 45);
+            this.btBanks10.Name = "btBanks10";
+            this.btBanks10.Size = new System.Drawing.Size(53, 23);
+            this.btBanks10.TabIndex = 1;
+            this.btBanks10.Text = "-10%";
+            this.btBanks10.UseVisualStyleBackColor = false;
+            this.btBanks10.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks20
+            // 
+            this.btBanks20.BackColor = System.Drawing.Color.Red;
+            this.btBanks20.Location = new System.Drawing.Point(6, 71);
+            this.btBanks20.Name = "btBanks20";
+            this.btBanks20.Size = new System.Drawing.Size(53, 23);
+            this.btBanks20.TabIndex = 2;
+            this.btBanks20.Text = "-15%";
+            this.btBanks20.UseVisualStyleBackColor = false;
+            this.btBanks20.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks30
+            // 
+            this.btBanks30.BackColor = System.Drawing.Color.Red;
+            this.btBanks30.Location = new System.Drawing.Point(6, 97);
+            this.btBanks30.Name = "btBanks30";
+            this.btBanks30.Size = new System.Drawing.Size(53, 23);
+            this.btBanks30.TabIndex = 3;
+            this.btBanks30.Text = "-20%";
+            this.btBanks30.UseVisualStyleBackColor = false;
+            this.btBanks30.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks40
+            // 
+            this.btBanks40.BackColor = System.Drawing.Color.Red;
+            this.btBanks40.Location = new System.Drawing.Point(6, 123);
+            this.btBanks40.Name = "btBanks40";
+            this.btBanks40.Size = new System.Drawing.Size(53, 23);
+            this.btBanks40.TabIndex = 4;
+            this.btBanks40.Text = "-30%";
+            this.btBanks40.UseVisualStyleBackColor = false;
+            this.btBanks40.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks41
+            // 
+            this.btBanks41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btBanks41.Location = new System.Drawing.Point(65, 123);
+            this.btBanks41.Name = "btBanks41";
+            this.btBanks41.Size = new System.Drawing.Size(53, 23);
+            this.btBanks41.TabIndex = 9;
+            this.btBanks41.Text = "30%";
+            this.btBanks41.UseVisualStyleBackColor = false;
+            this.btBanks41.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks31
+            // 
+            this.btBanks31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btBanks31.Location = new System.Drawing.Point(65, 97);
+            this.btBanks31.Name = "btBanks31";
+            this.btBanks31.Size = new System.Drawing.Size(53, 23);
+            this.btBanks31.TabIndex = 8;
+            this.btBanks31.Text = "20%";
+            this.btBanks31.UseVisualStyleBackColor = false;
+            this.btBanks31.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks21
+            // 
+            this.btBanks21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btBanks21.Location = new System.Drawing.Point(65, 71);
+            this.btBanks21.Name = "btBanks21";
+            this.btBanks21.Size = new System.Drawing.Size(53, 23);
+            this.btBanks21.TabIndex = 7;
+            this.btBanks21.Text = "15%";
+            this.btBanks21.UseVisualStyleBackColor = false;
+            this.btBanks21.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks11
+            // 
+            this.btBanks11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btBanks11.Location = new System.Drawing.Point(65, 45);
+            this.btBanks11.Name = "btBanks11";
+            this.btBanks11.Size = new System.Drawing.Size(53, 23);
+            this.btBanks11.TabIndex = 6;
+            this.btBanks11.Text = "10%";
+            this.btBanks11.UseVisualStyleBackColor = false;
+            this.btBanks11.Click += new System.EventHandler(this.Banks_click);
+            // 
+            // btBanks01
+            // 
+            this.btBanks01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btBanks01.Location = new System.Drawing.Point(65, 19);
+            this.btBanks01.Name = "btBanks01";
+            this.btBanks01.Size = new System.Drawing.Size(53, 23);
+            this.btBanks01.TabIndex = 5;
+            this.btBanks01.Text = "5%";
+            this.btBanks01.UseVisualStyleBackColor = false;
+            this.btBanks01.Click += new System.EventHandler(this.Banks_click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 702);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btResetTarget);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox1);
@@ -895,9 +1037,12 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "FTSE/ATHEX calculator";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.Banks_click);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -991,6 +1136,17 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btResetTarget;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btBanks41;
+        private System.Windows.Forms.Button btBanks31;
+        private System.Windows.Forms.Button btBanks21;
+        private System.Windows.Forms.Button btBanks11;
+        private System.Windows.Forms.Button btBanks01;
+        private System.Windows.Forms.Button btBanks40;
+        private System.Windows.Forms.Button btBanks30;
+        private System.Windows.Forms.Button btBanks20;
+        private System.Windows.Forms.Button btBanks10;
+        private System.Windows.Forms.Button btBanks00;
     }
 }
 

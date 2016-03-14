@@ -120,6 +120,25 @@ namespace ftse_athex_calculator
                 fin.Target.Text = fin.Current.Text;
             }
         }
+
+        private void Banks_click(object sender, EventArgs e)
+        {
+            try
+            {
+                var val = double.Parse((sender as Button).Text.Replace('%',' ')) / 100;
+                foreach( var obj in finmap.Where(x => new string[] { "ΕΤΕ", "ΕΥΡΩΒ", "ΠΕΙΡ", "ΑΛΦΑ" }.Contains(x.Name)))
+                {
+                    obj.Target.Text = (double.Parse(obj.Current.Text) + (double.Parse(obj.Current.Text) * val)).ToString();
+                }
+                
+            }
+            catch (Exception) { }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     class FinMapNode
     {
