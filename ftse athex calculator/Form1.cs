@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ftse_athex_calculator
 {
@@ -16,21 +17,68 @@ namespace ftse_athex_calculator
         public readonly double Divisor = 124034530.629652;
         private List<FinMapNode> finmap;
         private Timer feedTimer;
+        private List<StockControl> stockControls;
 
         public Form1()
         {
             feedTimer = new Timer { Interval = 30000, Enabled = false };
             InitializeComponent();
+            InitializeStockComponent();
             InitializeFinMap();
+            /*
             foreach (var fin in finmap)
             {
                 fin.Current.TextChanged += CalcCurrent;
                 fin.Target.TextChanged += CalcTarget;
             }
-
+            */
             feedTimer.Tick += FeedTimer_Tick;
 
+           
+
         }
+
+        private void InitializeStockComponent()
+        {
+            stockControls = new List<StockControl>();
+            stockControls.Add(new StockControl { StockName = "ΒΙΟ", Shares = 46654156.98 });
+            stockControls.Add(new StockControl { StockName = "ΕΕΕ", Shares = 198796300.38 });
+            stockControls.Add(new StockControl { StockName = "ΕΛΛΑΚΤΩΡ", Shares = 132750984.3283582 });
+            stockControls.Add(new StockControl { StockName = "ΑΛΦΑ", Shares = 1367824267.894737, });
+            stockControls.Add(new StockControl { StockName = "ΕΤΕ", Shares = 5488290912.663755 });
+            stockControls.Add(new StockControl { StockName = "ΕΥΡΩΒ", Shares = 1770658998.704663 });
+            stockControls.Add(new StockControl { StockName = "ΓΕΚΤΕΡΝΑ", Shares = 77358410.75949367 });
+            stockControls.Add(new StockControl { StockName = "ΜΥΤΙΛ", Shares = 83010261.76470588 });
+            stockControls.Add(new StockControl { StockName = "ΛΑΜΔΑ", Shares = 39063669.75 });
+            stockControls.Add(new StockControl { StockName = "ΜΠΕΛΑ", Shares = 100684221.6363636 });
+            stockControls.Add(new StockControl { StockName = "ΦΦΓΚΡΠ", Shares = 34143587.09302326 });
+            stockControls.Add(new StockControl { StockName = "ΕΛΠΕ", Shares = 73352444.19191919 });
+            stockControls.Add(new StockControl { StockName = "ΟΠΑΠ", Shares = 210540000 });
+            stockControls.Add(new StockControl { StockName = "ΠΕΙΡ", Shares = 6462555622.093023 });
+            stockControls.Add(new StockControl { StockName = "ΕΥΔΑΠ", Shares = 41535000 });
+            stockControls.Add(new StockControl { StockName = "ΜΟΗ", Shares = 56499319.76987448 });
+            stockControls.Add(new StockControl { StockName = "ΔΕΗ", Shares = 106720000 });
+            stockControls.Add(new StockControl { StockName = "ΟΛΠ", Shares = 6500000 });
+            stockControls.Add(new StockControl { StockName = "ΓΡΙΒ", Shares = 39491400 });
+            stockControls.Add(new StockControl { StockName = "ΕΧΑΕ", Shares = 62100134.80769231 });
+            stockControls.Add(new StockControl { StockName = "ΑΡΑΙΓ", Shares = 29281010.88082902 });
+            stockControls.Add(new StockControl { StockName = "ΤΕΝΕΡΓ", Shares = 41539471.66666667 });
+            stockControls.Add(new StockControl { StockName = "ΤΙΤΚ", Shares = 47008776.46464646 });
+            stockControls.Add(new StockControl { StockName = "ΟΤΕ", Shares = 245075194.4029851 });
+            stockControls.Add(new StockControl { StockName = "ΜΕΤΚ", Shares = 24416781.91330344 });
+
+            flowLayoutPanel.Controls.AddRange(stockControls.ToArray());
+            foreach (var ctrl in stockControls)
+            {
+                ctrl.SnapshotValueChange += CalcSnapshotIndex;
+                chart1.Series[0].Points.Add(new DataPoint { YValues = new double[] { 0 }, LegendText = ctrl.StockName });
+            }
+        }
+        private void CalcSnapshotIndex(object sender, EventArgs e)
+        {
+            tbTarFTSE.Text = stockControls.Sum(x => x.SnapshotIndexValue).ToString();
+        }
+
         private void CalcCurrent(object sender, EventArgs e)
         {
             try {
@@ -57,13 +105,22 @@ namespace ftse_athex_calculator
                     foreach (var record in data.Split('|'))
                     {
                         var row = record.Split('~');
-                        var elem = finmap.Where(x => x.Name == row[0]);
+                        var elem = stockControls.Where(x => x.StockName == row[0]);
                         if (elem.Count() == 0)
                             continue;
-                        elem.First().Current.Text = row[2];
-         
+                        elem.First().StockCurrentValue = double.Parse(row[2]);
                     }
+                    //recalc index
+                    tbCurFTSE.Text = stockControls.Sum(x => x.CurrentIndexValue).ToString();
+                    //append pie
+                    int idx = 0;
+                    foreach (var ctrl in stockControls)
+                    {
 
+                        chart1.Series[0].Points[idx].YValues = new double[] { ctrl.CurrentIndexValue } ;//.Add(new DataPoint { YValues = new double []{ ctrl.CurrentIndexValue }, LegendText = ctrl.StockName });
+                        idx++;
+                    }
+                    
 
                 }
                 catch (IndexOutOfRangeException)
@@ -77,6 +134,7 @@ namespace ftse_athex_calculator
 
         private void InitializeFinMap()
         {
+            /*
             finmap = new List<FinMapNode>();
             finmap.Add(new FinMapNode { Name = "ΒΙΟ", Shares = 46654156.98, Current = tbCurVio, Target = tbTarVio });
             finmap.Add(new FinMapNode { Name = "ΕΕΕ", Shares = 198796300.38, Current = tbCurEEE, Target = tbTarEEE });
@@ -103,7 +161,7 @@ namespace ftse_athex_calculator
             finmap.Add(new FinMapNode { Name = "ΤΙΤΚ", Shares = 47008776.46464646, Current = tbCurTITK, Target = tbTarTITK });
             finmap.Add(new FinMapNode { Name = "ΟΤΕ", Shares = 245075194.4029851, Current = tbCurOTE, Target = tbTarOTE });
             finmap.Add(new FinMapNode { Name = "ΜΕΤΚ", Shares = 24416781.91330344, Current = tbCurMETK, Target = tbTarMETK });
-
+            */
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -138,6 +196,12 @@ namespace ftse_athex_calculator
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTakeSnapshot_Click(object sender, EventArgs e)
+        {
+            stockControls.ForEach(x => x.TakeSnapshot());
+            tbTarFTSE.Text = stockControls.Sum(x => x.SnapshotIndexValue).ToString();
         }
     }
     class FinMapNode
