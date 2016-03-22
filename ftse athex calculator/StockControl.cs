@@ -80,7 +80,12 @@ namespace ftse_athex_calculator
         
         private void CalcIndexValueDiff()
         {
-            tbIndexValueDiff.Text = (CurrentIndexValue - SnapshotIndexValue).ToString();
+            var val = CurrentIndexValue - SnapshotIndexValue;
+            tbIndexValueDiff.Text = val.ToString();
+            if (val > 0.0)
+                tbIndexValueDiff.ForeColor = Color.Green;
+            else
+                tbIndexValueDiff.ForeColor = Color.Red;
         }
 
         private void tbSnapshot_TextChanged(object sender, EventArgs e)
