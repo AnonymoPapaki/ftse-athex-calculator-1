@@ -71,7 +71,7 @@ namespace ftse_athex_calculator
             foreach (var ctrl in stockControls)
             {
                 ctrl.SnapshotValueChange += CalcSnapshotIndex;
-                chart1.Series[0].Points.Add(new DataPoint { YValues = new double[] { 0 }, LegendText = ctrl.StockName });
+                //chart1.Series[0].Points.Add(new DataPoint { YValues = new double[] { 0 }, LegendText = ctrl.StockName });
             }
         }
         private void CalcSnapshotIndex(object sender, EventArgs e)
@@ -113,12 +113,12 @@ namespace ftse_athex_calculator
                     //recalc index
                     tbCurFTSE.Text = stockControls.Sum(x => x.CurrentIndexValue).ToString();
                     //append pie
-                    int idx = 0;
+
+                    chart1.Series[0].Points.Clear();
                     foreach (var ctrl in stockControls)
                     {
-
-                        chart1.Series[0].Points[idx].YValues = new double[] { ctrl.CurrentIndexValue } ;//.Add(new DataPoint { YValues = new double []{ ctrl.CurrentIndexValue }, LegendText = ctrl.StockName });
-                        idx++;
+                        if (ctrl.CurrentIndexValue > 3.0)
+                            chart1.Series[0].Points.Add(new DataPoint { YValues = new double[] { ctrl.CurrentIndexValue }, LegendText = ctrl.StockName });
                     }
                     
 

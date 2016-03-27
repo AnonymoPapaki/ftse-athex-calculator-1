@@ -32,6 +32,7 @@
             this.tbCurrent = new System.Windows.Forms.TextBox();
             this.tbSnapshot = new System.Windows.Forms.TextBox();
             this.tbIndexValueDiff = new System.Windows.Forms.TextBox();
+            this.tbIndexValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbText
@@ -66,10 +67,19 @@
             this.tbIndexValueDiff.Size = new System.Drawing.Size(48, 20);
             this.tbIndexValueDiff.TabIndex = 3;
             // 
+            // tbIndexValue
+            // 
+            this.tbIndexValue.Location = new System.Drawing.Point(246, 0);
+            this.tbIndexValue.Name = "tbIndexValue";
+            this.tbIndexValue.ReadOnly = true;
+            this.tbIndexValue.Size = new System.Drawing.Size(41, 20);
+            this.tbIndexValue.TabIndex = 4;
+            // 
             // StockControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbIndexValue);
             this.Controls.Add(this.tbIndexValueDiff);
             this.Controls.Add(this.tbSnapshot);
             this.Controls.Add(this.tbCurrent);
@@ -87,5 +97,6 @@
         private System.Windows.Forms.TextBox tbCurrent;
         private System.Windows.Forms.TextBox tbSnapshot;
         private System.Windows.Forms.TextBox tbIndexValueDiff;
+        private System.Windows.Forms.TextBox tbIndexValue;
     }
 }

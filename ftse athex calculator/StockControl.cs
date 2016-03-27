@@ -86,6 +86,8 @@ namespace ftse_athex_calculator
                 tbIndexValueDiff.ForeColor = Color.Green;
             else
                 tbIndexValueDiff.ForeColor = Color.Red;
+            //calc index value
+            tbIndexValue.Text = CurrentIndexValue.ToString();
         }
 
         private void tbSnapshot_TextChanged(object sender, EventArgs e)
